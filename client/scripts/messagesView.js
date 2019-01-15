@@ -3,15 +3,13 @@ var MessagesView = {
   $chats: $('#chats'),
 
   initialize: function() {
+     $('#chats').append(Parse.readAll);
     App.fetch();
-  },
-
-  render: function() {
-    //$("#chats").append('asdadadsadsadada') 
+    
   },
 
   renderMessage: function() {
-    $('#chats').append('<div>asdads</div>'); 
+    $('#chats').append(MessageView.render({username: 'Luke', text: 'what up'})); 
   }
 
 
