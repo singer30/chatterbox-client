@@ -10,7 +10,16 @@ var FormView = {
     // Stop the browser from submitting the form
     event.preventDefault();
     
-    console.log('click!');
+    var message = {
+      roomname: Rooms.selected,
+      text: FormView.$form.find('#message').val(),
+      username: App.username
+    };
+    Parse.create(message, (data) => {
+      _.extend(message, data); //  extends the data to the message to have it also include an objectID key
+      Messages.add(message);
+      MessagesView.render();
+    });
   },
 
   setStatus: function(active) {
