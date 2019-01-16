@@ -11,14 +11,14 @@ var FormView = {
     event.preventDefault();
     
     var message = {
-      roomname: Rooms.selected,
+      roomname: Rooms.selected || 'lobby',
       text: FormView.$form.find('#message').val(),
       username: App.username
     };
     Parse.create(message, (data) => {
       _.extend(message, data); //  extends the data to the message to have it also include an objectID key
-      Messages.add(message);
-      MessagesView.render();
+      Messages.add(message, MessagesView.render);
+      
     });
   },
 

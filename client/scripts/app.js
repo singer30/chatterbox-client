@@ -14,16 +14,18 @@ var App = {
     // Fetch initial batch of messages
     App.startSpinner();
     App.fetch(App.stopSpinner);
-
+    setInterval(App.fetch, 1000);
   },
+
+ 
 
   fetch: function(callback = ()=>{}) {
     Parse.readAll((data) => {
       // examine the response from the server request:
-      Rooms.update(data.results)
-      Messages.update(data.results)
-      MessagesView.render();
-      RoomsView.render();
+
+      Rooms.update(data.results, RoomsView.render);
+      Messages.update(data.results, MessagesView.render);
+      
 
       callback();
     });
@@ -39,3 +41,5 @@ var App = {
     FormView.setStatus(false);
   }
 };
+
+
