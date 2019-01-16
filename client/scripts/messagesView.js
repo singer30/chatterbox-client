@@ -33,7 +33,7 @@ var MessagesView = {
   handleClick: function (event) {
       var username = $(event.target).data('username');
       if(username === undefined) { return; }
-      // Friends.toggleStatus(username, MessagesView.render);
+      Friends.toggleStatus(username, MessagesView.render);
   }
 };
 /*
