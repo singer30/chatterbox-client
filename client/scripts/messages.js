@@ -1,7 +1,7 @@
 var Messages = {
     _data: {},
 
-    item: function() {
+    items: function() {
         return _.chain(Object.values(Messages._data)).sortBy('createdAt');
     },
 
@@ -12,7 +12,7 @@ var Messages = {
 
     update: function(messages, callback = () => {}){
         var length = Object.keys(Messages._data).length;
-        for (var message of messages) { 
+        for (let message of messages) { 
             Messages._data[message.objectId] = Messages._conform(message);
        }
 

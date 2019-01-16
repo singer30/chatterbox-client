@@ -11,9 +11,9 @@ var FormView = {
     event.preventDefault();
     
     var message = {
-      roomname: Rooms.selected || 'lobby',
+      username: App.username,
       text: FormView.$form.find('#message').val(),
-      username: App.username
+      roomname: Rooms.selected || 'lobby'
     };
     Parse.create(message, (data) => {
       _.extend(message, data); //  extends the data to the message to have it also include an objectID key

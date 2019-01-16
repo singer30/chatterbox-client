@@ -12,11 +12,11 @@ var MessagesView = {
     //   MessagesView.$chats.appendTo($message);
     // }
     // if(messageObj) {
-    //   var customMessage = MessageView.render(arguments[0]);
+    //   var customMessage = MessageView.render(messageObj);
     //   MessagesView.$chats.prepend(customMessage);
     // }
     MessagesView.$chats.html('');
-    Messages.items().filter(message => Rooms.isSelected(messageroomname)).each(message => MessagesView.renderMessage(message));
+    Messages.items().filter(message => Rooms.isSelected(message.roomname)).each(message => MessagesView.renderMessage(message));
     
     // _.filter(Messages._data, (message) => {
     //   Rooms.isSelected(message, roomname);
@@ -30,7 +30,7 @@ var MessagesView = {
       var $message = MessageView.render(message);
       MessagesView.$chats.prepend($message);
   },
-  handleClick: function () {
+  handleClick: function (event) {
       var username = $(event.target).data('username');
       if(username === undefined) { return; }
       // Friends.toggleStatus(username, MessagesView.render);
